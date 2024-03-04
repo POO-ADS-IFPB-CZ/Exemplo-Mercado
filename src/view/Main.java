@@ -1,3 +1,7 @@
+package view;
+
+import model.Produto;
+
 import java.time.LocalDate;
 
 public class Main {
