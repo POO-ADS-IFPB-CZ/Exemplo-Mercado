@@ -10,14 +10,16 @@ public class Produto {
     private float valor;
     private LocalDate validade;
     private int estoque;
+    private Categoria categoria;
 
     public Produto(String descricao, float valor,
-                   LocalDate validade){
+                   LocalDate validade, Categoria categoria){
         codigo = ++contador;
         this.descricao = descricao;
         this.valor = valor;
         this.validade = validade;
         estoque = 0;
+        this.categoria = categoria;
     }
 
     public static int getContador(){
@@ -58,5 +60,13 @@ public class Produto {
 
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+
+    public Categoria getCategoria(){
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria){
+        this.categoria = categoria;
     }
 }
