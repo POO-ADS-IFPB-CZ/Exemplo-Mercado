@@ -33,6 +33,9 @@ public class Main {
                 case 1:
                     cadastrarProduto();
                     break;
+                case 2:
+                    exibirProduto();
+                    break;
                 case 5:
                     System.exit(0);
                     break;
@@ -42,6 +45,15 @@ public class Main {
 
         }
 
+    }
+
+    private static void exibirProduto() {
+        System.out.println("Código: "+produto.getCodigo());
+        System.out.println("Descricao: "+produto.getDescricao());
+        System.out.println("Valor: "+produto.getValor());
+        System.out.println("Validade: "+produto.getValidade().format(formatter));
+        System.out.println("Estoque: "+produto.getEstoque());
+        System.out.println("Categoria: "+produto.getCategoria());
     }
 
     private static void cadastrarProduto() {
@@ -75,4 +87,5 @@ public class Main {
         }
         produto.setCategoria(categoria);
     }
+
 }
