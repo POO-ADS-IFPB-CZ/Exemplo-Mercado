@@ -12,6 +12,9 @@ public class Produto {
     private int estoque;
     private Categoria categoria;
 
+    public Produto(){
+        codigo = ++contador;
+    }
     public Produto(String descricao, float valor,
                    LocalDate validade, Categoria categoria){
         codigo = ++contador;

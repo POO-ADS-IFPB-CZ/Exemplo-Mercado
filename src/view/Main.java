@@ -1,17 +1,23 @@
 package view;
 
+import model.Categoria;
 import model.Produto;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
+
+    private static Produto produto;
+    private static DateTimeFormatter formatter;
+    private static Scanner scanner;
+
     public static void main(String[] args) {
 
-        DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("dd/MM/yyyy");
-        Scanner scanner = new Scanner(System.in);
-        Produto produto;
+        formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        scanner = new Scanner(System.in);
+        produto = new Produto();
 
         while (true){
             System.out.println("Escolha a opção:" +
@@ -39,5 +45,34 @@ public class Main {
     }
 
     private static void cadastrarProduto() {
+        System.out.println("Informe a descrição: ");
+        String descricao = scanner.nextLine();
+        produto.setDescricao(descricao);
+        System.out.println("Informe o valor: ");
+        float valor = scanner.nextFloat();
+        scanner.nextLine();
+        produto.setValor(valor);
+        System.out.println("Informe a validade: ");
+        String validade = scanner.nextLine();
+        LocalDate dataValidade = LocalDate.parse(validade, formatter);
+        produto.setValidade(dataValidade);
+        System.out.println("Informe a Categoria:" +
+                "\n1 - Para alimentício" +
+                "\n2 - Para limpeza" +
+                "\n3 - Para Higiene" +
+                "\n4 - Para Bebida");
+        int nCategoria = scanner.nextInt();
+        scanner.nextLine();
+        Categoria categoria;
+        if(nCategoria == 1){
+            categoria = Categoria.ALIMENTICIO;
+        }else if(nCategoria == 2){
+            categoria = Categoria.LIMPEZA;
+        } else if (nCategoria == 3) {
+            categoria = Categoria.HIGIENE;
+        }else{
+            categoria = Categoria.BEBIDA;
+        }
+        produto.setCategoria(categoria);
     }
 }
